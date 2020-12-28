@@ -18,7 +18,7 @@ const AccountSchema = new Schema({
 });
 
 const Model = mongoose.model;
-const Account = Model("Dev_TESTING", AccountSchema, "account");
+const Account = Model("Account", AccountSchema, "acdcount");
 
 router.get("/create_account", function (req, res) {
   const query = req["query"];
