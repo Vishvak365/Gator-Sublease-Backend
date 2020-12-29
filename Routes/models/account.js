@@ -20,7 +20,7 @@ const AccountSchema = new Schema({
     required: true,
   },
   first_name: {
-    type: String,
+    type: String, 
     required: true,
   },
   last_name: {
@@ -37,14 +37,14 @@ const AccountSchema = new Schema({
   },
 });
 // Hashes password automatically
-AccountSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
-  const hashedPassword = bcrypt.hashSync(this.password);
-  this.password = hashedPassword;
-});
+// AccountSchema.pre("save", async function (next) {
+//   if (!this.isModified("password")) return next();
+//   const hashedPassword = bcrypt.hashSync(this.password);
+//   this.password = hashedPassword;
+// });
 
-AccountSchema.methods.verifyPassword = function (password) {
-  return bcrypt.compareSync(password, this.password);
-};
+// AccountSchema.methods.verifyPassword = function (password) {
+//   return bcrypt.compareSync(password, this.password);
+// };
 
 module.exports = mongoose.model("accounts", AccountSchema);

@@ -3,8 +3,17 @@ var router = express.Router();
 const account = require("../models/account");
 
 router.post("/create_account", function (req, res) {
-  if (!req.body.username || !req.body.password) {
-    res.status(400).send("username or password not included in body");
+  req_body = req.body;
+  // if (!req.body.username || !req.body.email||!req.body.first_name||!req.body. || !req.body.password) {
+  if (
+    !req_body.username ||
+    !req_body.email ||
+    !req_body.first_name ||
+    !req_body.last_name ||
+    !req_body.phone_number ||
+    !req_body.password
+  ) {
+    res.status(400).send({ error: "Insufficient information" });
   } else {
     let new_account = new account({
       username: req.body.username,
@@ -16,24 +25,36 @@ router.post("/create_account", function (req, res) {
     });
     new_account.save(function (err, account) {
       if (err) {
-        res
-          .status(409)
-          .json({
+        /* istanbul ignore next */
+        if (err.message.includes("E11000")) {
+          res.status(409).send({
             error: "Email, Phone, or Username is already Taken",
-          })
-          .send();
-        console.log(err.message.includes("E11000"));
+          });
+        }
       } else {
-        console.log(account.username);
-        res
-          .json({
-            success: "Account Created Successfully",
-          })
-          .status(200)
-          .send();
+        res.status(200).send({
+          success: "Account Created Successfully",
+        });
       }
     });
   }
 });
-
+router.post("/remove_account", function (req, res) {
+  if (!req.body.username) {
+    res.status(400).send({ error: "Insufficient information" });
+  } else {
+    account.findOneAndDelete(
+      { username: req.body.username },
+      function (err, account) {
+        /* istanbul ignore next */
+        if (err) {
+          /* istanbul ignore next */
+          res.send(err);
+        } else {
+          res.status(200).send({ success: "Successfully removed user" });
+        }
+      }
+    );
+  }
+});
 module.exports = router;
