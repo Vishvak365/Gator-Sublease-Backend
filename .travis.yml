@@ -9,4 +9,4 @@ script:
   - npm test
 
 service_name: travis-pro
-repo_token: qfnQ4jY07djFbvsOrokp6fIHMju1lkDS2
+repo_token: qfnQ4jY07djFbvsOrokp6fIHMju1lkDS2 
