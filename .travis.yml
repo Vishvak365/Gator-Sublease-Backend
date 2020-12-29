@@ -6,7 +6,4 @@ node_js:
   - node
 
 script:
-  - npm test
-
-service_name: travis-pro
-repo_token: qfnQ4jY07djFbvsOrokp6fIHMju1lkDS2
+  - npm run test:coverall
