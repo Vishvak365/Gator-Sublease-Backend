@@ -10,9 +10,9 @@ app.get("/", (req, res) => {
 });
 app.use("/api/account", account_create);
 
-app.listen(port, () => {
-  console.log(`Started on port ${port}`);
-  console.log(process.env.MONGO_URL);
-});
+// app.listen(port, () => {
+//   console.log(`Started on port ${port}`);
+//   console.log(process.env.MONGO_URL);
+// });
 
 module.exports = app;

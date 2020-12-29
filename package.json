@@ -2,10 +2,10 @@
   "name": "gator-sublease-backend",
   "version": "1.0.0",
   "description": "Backend Server for Gator Sublease",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "jest",
-    "start": "nodemon index.js"
+    "test": "jest --forceExit",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
