@@ -1,7 +1,11 @@
-const { request } = require("express");
-
-describe("API Home Test", () => {
-  it("Tests if a response is given from API", () => {
+describe("True == True?", () => {
+  it("True == True?", () => {
     expect(true).toBe(true);
+  });
+});
+
+describe("False == False?", () => {
+  it("False == False?", () => {
+    expect(false).toBe(false);
   });
 });
