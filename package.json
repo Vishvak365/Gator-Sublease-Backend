@@ -5,6 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "jest --forceExit",
+    "test:coverage": "jest --coverage",
+    "test:coverall": "jest --forceExit --coverage --coverageReporters=text-lcov | coveralls",
     "start": "nodemon server.js"
   },
   "repository": {
