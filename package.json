@@ -7,7 +7,8 @@
     "test": "jest --forceExit",
     "test:coverage": "jest --coverage",
     "test:coverall": "jest --forceExit --coverage --coverageReporters=text-lcov | coveralls",
-    "start": "nodemon server.js"
+    "start:dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
