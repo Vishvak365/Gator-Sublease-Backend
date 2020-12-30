@@ -4,7 +4,6 @@ const account = require("../models/account");
 
 router.post("/create_account", function (req, res) {
   req_body = req.body;
-  // if (!req.body.username || !req.body.email||!req.body.first_name||!req.body. || !req.body.password) {
   if (
     !req_body.username ||
     !req_body.email ||
