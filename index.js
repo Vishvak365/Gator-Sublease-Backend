@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const dotenv = require("dotenv");
 dotenv.config();
+
 var account_create = require("./Routes/Accounts/Account_Creation");
 app.use(express.json());
 app.get("/", (req, res) => {
