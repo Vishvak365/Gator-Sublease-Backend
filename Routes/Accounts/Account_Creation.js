@@ -1,7 +1,23 @@
 var express = require("express");
 var router = express.Router();
 const account = require("../models/account");
-
+const firebase = require("../firebase/config");
+router.get("/fb/create_account", function (req, res) {
+  firebase
+    .auth()
+    .createUser({
+      email: "vishvak@vishvak.com",
+      password: "asdlfkjaejw223",
+    })
+    .then((userRecord) => {
+      // See the UserRecord reference doc for the contents of userRecord.
+      console.log("Successfully created new user:", userRecord.uid);
+    })
+    .catch((error) => {
+      console.log("Error creating new user:", error);
+    });
+  res.send();
+});
 router.post("/create_account", function (req, res) {
   req_body = req.body;
   if (
