@@ -1,0 +1,37 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [15.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create env file
+      run: |
+        touch .env
+        echo MONGO_URL =${{ secrets.MONGO_URL }} >> .env
+        echo FB_PRIVATE_KEY_ID =${{ secrets.FB_PRIVATE_KEY_ID }} >> .env
+        echo FB_PRIVATE_KEY =${{ secrets.FB_PRIVATE_KEY }} >> .env
+        echo FB_CLIENT_EMAIL =${{ secrets.FB_CLIENT_EMAIL }} >> .env
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
+    - run: npm run test:coverall
