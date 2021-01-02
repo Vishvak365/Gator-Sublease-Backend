@@ -1,9 +1,6 @@
 const dotenv = require("dotenv");
 const firebase = require("firebase-admin");
 dotenv.config();
-if (process.env.prod) {
-} else {
-}
 const config = {
   type: "service_account",
   project_id: "gator-sublease",
@@ -20,6 +17,5 @@ const config = {
 firebase.initializeApp({
   credential: firebase.credential.cert(config),
 });
-// const FirebaseAuth = require("firebaseauth"); // or import FirebaseAuth from 'firebaseauth';
-// const firebase = new FirebaseAuth(process.env.FB_API_KEY);
+firebase.auth().
 module.exports = firebase;
