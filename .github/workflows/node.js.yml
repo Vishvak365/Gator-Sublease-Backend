@@ -24,6 +24,9 @@ jobs:
       run: |
         touch .env
         echo MONGO_URL =${{ secrets.MONGO_URL }} >> .env
+        echo FB_PRIVATE_KEY_ID =${{ secrets.FB_PRIVATE_KEY_ID }} >> .env
+        echo FB_PRIVATE_KEY =${{ secrets.FB_PRIVATE_KEY }} >> .env
+        echo FB_CLIENT_EMAIL =${{ secrets.FB_CLIENT_EMAIL }} >> .env
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
