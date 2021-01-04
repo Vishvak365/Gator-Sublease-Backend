@@ -4,11 +4,11 @@
   "description": "Backend Server for Gator Sublease",
   "main": "server.js",
   "scripts": {
-    "test": "jest --forceExit",
-    "test:coverage": "jest --coverage",
-    "test:coverall": "jest --forceExit --coverage --coverageReporters=text-lcov | coveralls",
-    "start:dev": "nodemon server.js",
-    "start": "node server.js"
+    "test": "set NODE_ENV=TEST && jest --forceExit",
+    "test:coverage": "set NODE_ENV=TEST && jest --coverage",
+    "test:coverall": "set NODE_ENV=TEST && jest --forceExit --coverage --coverageReporters=text-lcov | coveralls",
+    "start:dev": "set NODE_ENV=DEV && nodemon server.js",
+    "start": "set NODE_ENV=PROD && node server.js"
   },
   "repository": {
     "type": "git",
