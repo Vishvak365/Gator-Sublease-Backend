@@ -17,7 +17,4 @@ describe("Base Endpoints", () => {
     expect(response.text).toBe("API access for Gator Sublease");
     done();
   });
-  it("Sends JSON with wrong syntax", async(done)=>{
-    const response = await request.post("/api/account/create_account").send();
-  })
 });
