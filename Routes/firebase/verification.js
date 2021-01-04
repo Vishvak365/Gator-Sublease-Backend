@@ -1,6 +1,7 @@
 const firebase = require("firebase-admin");
 const dotenv = require("dotenv");
 dotenv.config();
+/* istanbul ignore next */
 function authMiddleware(request, response, next) {
   if (process.env.NODE_ENV.toLowerCase().includes("prod")) {
     console.log("Verifying");
