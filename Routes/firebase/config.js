@@ -17,5 +17,5 @@ const config = {
 firebase.initializeApp({
   credential: firebase.credential.cert(config),
 });
-firebase.auth().
+firebase.auth()
 module.exports = firebase;
