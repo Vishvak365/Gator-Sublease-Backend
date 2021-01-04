@@ -3,6 +3,9 @@ const dotenv = require("dotenv");
 dotenv.config();
 /* istanbul ignore next */
 function authMiddleware(request, response, next) {
+  if (request.path === "/api/account/fb/create_account") {
+    return next();
+  }
   if (process.env.NODE_ENV.toLowerCase().includes("prod")) {
     console.log("Verifying");
     const headerToken = request.headers.authorization;
